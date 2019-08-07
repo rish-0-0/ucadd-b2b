@@ -22,7 +22,8 @@ class App extends Component {
 			<div className="container main-App">
 				<div className="row">
 					<div className="column">
-						Welcome
+						Welcome to the React, Redux and Firebase bootstrap application built by <br/>
+						<strong>Rishabh Anand</strong>
 					</div>
 					<div className='column'>
 						<img src={logo} alt="react logo" />
