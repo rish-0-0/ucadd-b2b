@@ -1,51 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import { connect } from 'react-redux';
-import { readData } from './Actions/readData';
-import { writeNewDocumentWithId, writeNewDocumentWithoutId, updateDocument, deleteDocument } from './Actions/writeData';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import Login from './Authentication';
+import Register from './Authentication/register';
+import Dashboard from './Components/Pages/Dashboard';
+import { SnackbarProvider } from 'notistack';
 
-class App extends Component {
+const PrivateRoute = ({component: Component, ...rest}) => (
+  <Route {...rest}
+    render={props => (
+      sessionStorage.getItem('loggedIn')
+      ? <Component {...props} />
+      : <Redirect to='/login' />
+    )}
+  />
+);
+  
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			// APP STATE
-		};
-		// THIS BINDINGS AND VARIABLES
-	}
-	// LIFE CYCLE METHODS
-	// componentDidMount() {
-	// }
-	// RENDER METHOD
-	render() {
-		return (
-			<div className="container main-App">
-				<div className="row">
-					<div className="column">
-						Welcome to the React, Redux and Firebase bootstrap application built by <br/>
-						<strong>Rishabh Anand</strong>
-					</div>
-					<div className='column'>
-						<img src={logo} alt="react logo" />
-					</div>
-				</div>
-			</div>
-		);
-	}
+function App(props) {
+	return (
+		<React.Fragment>
+			<Router>
+				<Switch>
+					<React.Fragment>
+						<Route exact path="/login" component={Login} />
+						<Route exact path="/register" component={Register} />
+						<PrivateRoute exact path='/' component={Dashboard} />
+					</React.Fragment>
+				</Switch>
+			</Router>
+		</React.Fragment>
+	);
+}
+function AppWithNotification() {
+  return(
+    <SnackbarProvider maxSnack={3}>
+      <App/>
+    </SnackbarProvider>
+  );
 }
 const mapStateToProps = (state) => {
-	return {
-		...state,
-	};
+  const { loggedIn } = state.user;
+  return {
+    loggedIn,
+  };
 };
-const mapDispatchToProps = (dispatch) => {
-	return {
-		readData: (collection,document) => {dispatch(readData(collection,document))},
-		writeNewDocumentWithId: (collection,docId,data) => {dispatch(writeNewDocumentWithId(collection,docId,data))},
-		updateDocument: (collection,docId,data) => {dispatch(updateDocument(collection,docId,data))},
-		writeNewDocumentWithoutId: (collection,data) => {dispatch(writeNewDocumentWithoutId(collection,data))},
-		deleteDocument: (collection,docId) => {dispatch(deleteDocument(collection,docId))},
-	};
-};
-const connectedApp = connect(mapStateToProps,mapDispatchToProps)(App);
-export { connectedApp as App };
+export default connect(mapStateToProps)(AppWithNotification);
