@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import Login from './Authentication';
 import Register from './Authentication/register';
+import ForgotPassword from './Authentication/forgot';
 import Dashboard from './Components/Pages/Dashboard';
 import { SnackbarProvider } from 'notistack';
+import Profile from './Components/Pages/Profile';
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route {...rest}
@@ -25,7 +27,9 @@ function App(props) {
 					<React.Fragment>
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/register" component={Register} />
+            <Route exact path='/forgot' component={ForgotPassword} />
 						<PrivateRoute exact path='/' component={Dashboard} />
+            <PrivateRoute path="/profile" component={Profile} />
 					</React.Fragment>
 				</Switch>
 			</Router>

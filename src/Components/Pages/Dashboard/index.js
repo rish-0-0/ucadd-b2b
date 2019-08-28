@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../../Actions/auth/auth';
 import PieChart from '../../Progress/pieChart';
+import LineChart from '../../Progress/lineChart';
 import SectionTitle from '../../SectionTitle';
+import Table from '../../Progress/table';
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -26,6 +28,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 
 // mainList import
 import { mainListItems } from './listItems';
+
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -93,17 +96,24 @@ const useStyles = makeStyles(theme => ({
     overflow: 'auto',
   },
   container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  },
+  gridContainer: {
+    marginTop:theme.spacing(4),
+    marginBottom:theme.spacing(4),
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 240,
+    height: 340,
+  },
+  anotherFixedHeight: {
+    height:360,
   },
   button: {
     margin: theme.spacing(1),
@@ -112,7 +122,7 @@ const useStyles = makeStyles(theme => ({
 
 function Dashboard(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -120,6 +130,7 @@ function Dashboard(props) {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const anotherHeightPaper = clsx(classes.paper, classes.anotherFixedHeight);
 
   return (
     <div className={classes.root}>
@@ -166,28 +177,39 @@ function Dashboard(props) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container>
-            <Grid item md={8}>
-
+          <Container maxWidth="lg" className={classes.container}>
+            <Grid container spacing={1} className={classes.gridContainer}>
+              <Grid item md={7}>
+                <Paper className={anotherHeightPaper}>
+                  <SectionTitle>Test Scores</SectionTitle>
+                  <LineChart data={props.line} />
+                </Paper>
+              </Grid>
+              <Grid item md={5}>
+                <Paper className={fixedHeightPaper}>
+                  <SectionTitle>Subject Strength</SectionTitle>
+                  <PieChart data={props.pie}/>
+                </Paper>
+              </Grid>
             </Grid>
-            <Grid item md={4}>
-              <Paper className={fixedHeightPaper}>
-                <SectionTitle>Subject Strength</SectionTitle>
-                <PieChart/>
-              </Paper>
+            <Grid container className={classes.gridContainer}>
+              <Grid item>
+                <Table title="Class Report" />
+              </Grid>
             </Grid>
-          </Grid>
-        </Container>
+          </Container>
       </main>
     </div>
   );
 }
 const mapStateToProps = (state) => {
-  let { name,loggedIn } = state.user;
+  const { name,loggedIn } = state.user;
+  const { pie,line } = state.data;
   return {
     name,
     loggedIn,
+    pie,
+    line,
   };
 };
 const mapDispatchToProps = (dispatch) => {

@@ -4,6 +4,7 @@ const email = window.sessionStorage.getItem('email');
 const photoUrl = window.sessionStorage.getItem('photoUrl');
 const uid = window.sessionStorage.getItem('uid');
 const emailVerified = window.sessionStorage.getItem('emailVerified');
+const firebaseUser = JSON.parse(sessionStorage.getItem('firebaseUser'));
 const initialState = {
   loginStarted:false,
   loginError:null,
@@ -14,6 +15,7 @@ const initialState = {
   signUpEmailVerificationError:null,
 
   loggedIn:loggedIn,
+  user:firebaseUser,
   email:email,
   emailVerified:emailVerified,
   uid:uid,
@@ -33,6 +35,12 @@ export const user = (state=initialState,action) => {
         loginStarted:true,
         loggedIn:false,
         loginError:null,
+      };
+    case 'GET_FIREBASE_USER':
+      window.sessionStorage.setItem('firebaseUser',JSON.stringify(action.payload.user));
+      return {
+        ...state,
+        user:action.payload.user,
       };
     case 'LOGIN_SUCCESSFUL':
       window.sessionStorage.setItem('loggedIn',true);
@@ -122,6 +130,7 @@ export const user = (state=initialState,action) => {
         window.sessionStorage.removeItem('photoUrl');
         window.sessionStorage.removeItem('uid');
         window.sessionStorage.removeItem('emailVerified');
+        window.sessionStorage.removeItem('firebaseUser');
       return {
         ...state,
         loggedIn:false,

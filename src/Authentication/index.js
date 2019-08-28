@@ -37,10 +37,12 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '50%', // Fix IE 11 issue.
+    width: '90%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+    textAlign:'center',
   },
   submit: {
+    width:'50%',
     margin: theme.spacing(3, 0, 2),
   },
 }));
@@ -113,13 +115,13 @@ function SignInSide(props) {
                   Forgot password?
                 </Link>
               </Grid>
-              <Grid item>
+              <Grid item xs>
                 <Link to='/register'>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
-            <Grid container justify='center'>
+            <Grid container>
               <Grid item xs={12}>
                 {props.loginStarted
                 ? <CircularProgress />

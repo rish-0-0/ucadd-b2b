@@ -1,5 +1,5 @@
 import { firebaseAuth } from '../../firebase';
-
+import { firebaseAuthRef } from '../../firebase';
 
 /*
 
@@ -19,6 +19,14 @@ const loginSuccessful = (parcel) => {
     },
   };
 };
+const dispatchUser = (user) => {
+  return {
+    type:'GET_FIREBASE_USER',
+    payload: {
+      user,
+    },
+  };
+};
 const loginError = (err) => {
   return {
     type:'LOGIN_ERROR',
@@ -31,21 +39,29 @@ const loginError = (err) => {
 export const login = (email,password) => {
   return dispatch => {
     dispatch(loginStarted());
-    firebaseAuth.signInWithEmailAndPassword(email,password)
+    firebaseAuth.setPersistence(firebaseAuthRef.Auth.Persistence.LOCAL)
     .then(() => {
-      let user = firebaseAuth.currentUser;
-      console.log(user);
-      let parcel = {
-        'name':user.displayName,
-        'email':user.email,
-        'photoUrl':user.photoURL,
-        'emailVerified':user.emailVerified,
-        'uid':user.uid, //Do not use this to authenticate backend server
-      };
-      dispatch(loginSuccessful(parcel));
+      firebaseAuth.signInWithEmailAndPassword(email,password)
+      .then(() => {
+        let user = firebaseAuth.currentUser;
+        dispatch(dispatchUser(user));
+        // console.log(user);
+        let parcel = {
+          'name':user.displayName,
+          'email':user.email,
+          'photoUrl':user.photoURL,
+          'emailVerified':user.emailVerified,
+          'uid':user.uid, //Do not use this to authenticate backend server
+        };
+        dispatch(loginSuccessful(parcel));
+        })
+        .catch(err => {
+          console.log("ERROR OCURRED WHILE LOGGING IN",err.message);
+          dispatch(loginError(err.message));
+        });
     })
     .catch(err => {
-      console.log("ERROR OCURRED WHILE LOGGING IN",err.message);
+      console.log("ERROR in setting persistence",err.message);
       dispatch(loginError(err.message));
     });
   };

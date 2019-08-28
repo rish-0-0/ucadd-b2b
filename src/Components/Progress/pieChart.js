@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { ResponsiveContainer,PieChart, Pie, Cell,Tooltip } from 'recharts';
+import { ResponsiveContainer,PieChart, Pie, Cell,Tooltip,Legend } from 'recharts';
 
 const COLORS = [
     '#0088FE', //blue
@@ -19,12 +18,12 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
         </text>
     );
 };
-function Circular(props) {
+export default function Circular(props) {
     return(
         <ResponsiveContainer>
             <PieChart>
                 <Pie
-                    data={props.pie}
+                    data={props.data}
                     label={renderCustomizedLabel}
                     labelLine={false}
                     dataKey="value"
@@ -33,18 +32,12 @@ function Circular(props) {
                     outerRadius={80}                    
                 >
                     {
-                        props.pie.map((entry,index) => <Cell key={index} fill={COLORS[index%COLORS.length]} />)
+                        props.data.map((entry,index) => <Cell key={index} fill={COLORS[index%COLORS.length]} />)
                     }
                 </Pie>
                 <Tooltip/>
+                <Legend/>
             </PieChart>
         </ResponsiveContainer>
     );
 }
-const mapStateToProps = (state) => {
-    const { pie } = state.data;
-    return {
-        pie,
-    };
-};
-export default connect(mapStateToProps)(Circular);
