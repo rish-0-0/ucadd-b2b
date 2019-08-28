@@ -179,13 +179,13 @@ function Dashboard(props) {
         <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
             <Grid container spacing={1} className={classes.gridContainer}>
-              <Grid item md={7}>
+              <Grid item xs={12} md={7}>
                 <Paper className={anotherHeightPaper}>
                   <SectionTitle>Test Scores</SectionTitle>
                   <LineChart data={props.line} />
                 </Paper>
               </Grid>
-              <Grid item md={5}>
+              <Grid item xs={12} md={5}>
                 <Paper className={fixedHeightPaper}>
                   <SectionTitle>Subject Strength</SectionTitle>
                   <PieChart data={props.pie}/>
@@ -193,7 +193,7 @@ function Dashboard(props) {
               </Grid>
             </Grid>
             <Grid container className={classes.gridContainer}>
-              <Grid item>
+              <Grid item xs={12}>
                 <Table title="Class Report" />
               </Grid>
             </Grid>

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../Actions/auth/auth';
+import back from '../Images/login_side.svg';
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -21,8 +22,10 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    //backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: 'url('+back+')',
     backgroundRepeat: 'no-repeat',
+    backgroundPositionY:'100px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
@@ -31,6 +34,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    background: 'transparent',
   },
   avatar: {
     margin: theme.spacing(1),
