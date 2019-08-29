@@ -162,7 +162,7 @@ function Profile(props) {
                     <MenuIcon />
                 </IconButton>
                 <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                    Dashboard
+                    Profile
                 </Typography>
                 <IconButton color="inherit">
                     <Badge badgeContent={props.notifications} color="secondary">

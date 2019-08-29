@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../Actions/auth/auth';
-import back from '../Images/login_side.svg';
+import justTesting from '../Images/just_testing.svg';
+// import LiquidCheeze from '../Images/Liquid-Cheese.svg';
+// import back from '../Images/login_side.svg';
+// import furtherBack from '../Images/Large-Triangles.svg';
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -10,24 +13,52 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 // import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { fade,makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100vh',
+    height: '100vh',    
+    backgroundImage: 'url('+justTesting+')',
+    backgroundPositionX:'-2450px',
+    backgroundSize:'cover',
+    backgroundAttachment:'fixed',
+  },
+  logo: {
+    fontFamily:'Ubuntu',
+    fontSize:'5rem',
+    letterSpacing:'2px',
+    textTransform:'uppercase',
+    fontWeight:'bold',
+  },
+  input: {
+    // border: '1px solid #e2e2e1',
+    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor: '#fcfcfb',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    '&:hover': {
+      backgroundColor: '#fff',
+    },
+    '&$focused': {
+      backgroundColor: '#fff',
+      boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+      borderColor: theme.palette.primary.main,
+    },
   },
   image: {
     //backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundImage: 'url('+back+')',
-    backgroundRepeat: 'no-repeat',
-    backgroundPositionY:'100px',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    // backgroundImage:'url('+justTesting+')',
+    // backgroundRepeat:'no-repeat',
+    // backgroundPositionX:'-2800px',
+    // backgroundSize:'cover',
+    // backgroundSize:'contain',
+    // backgroundSize:'100% 100%',
+    height:'100vh',
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -60,11 +91,13 @@ function SignInSide(props) {
   }
   return (
     <Grid container component="main" className={classes.root}>
+      
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={6} className={classes.image} />
-      <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
+      <Grid item xs={false} sm={false} md={8} className={classes.image}>
+      </Grid>
+      <Grid item xs={12} sm={12} md={4} elevation={6} square>
         <div className={classes.paper}>
-          <Typography component="h1" variant="h2">
+          <Typography component="h1" variant="h2" className={classes.logo}>
             Ucadd
           </Typography>
           <Avatar className={classes.avatar}>
@@ -80,12 +113,14 @@ function SignInSide(props) {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              // label="Email Address"
+              placeholder="Email Address"
               name="email"
               autoComplete="email"
               autoFocus
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className={classes.input}
             />
             <TextField
               variant="outlined"
@@ -99,6 +134,7 @@ function SignInSide(props) {
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className={classes.input}
             />
             <Button
               type="submit"
