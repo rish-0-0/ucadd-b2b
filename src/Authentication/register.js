@@ -37,6 +37,12 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  links: {
+    textDecoration:'none',
+    textAlign:'center',
+    color:'black',
+    fontFamily:'14px',
+  },
 }));
 
 function SignUp(props) {
@@ -115,7 +121,7 @@ function SignUp(props) {
           </Button>
           <Grid container justify="center">
             <Grid item xs={12}>
-              <Link to="/login">
+              <Link className={classes.links} to="/login">
                 Already have an account? Sign in
               </Link>
             </Grid>

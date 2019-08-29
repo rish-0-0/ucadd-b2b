@@ -30,6 +30,7 @@ function App(props) {
             <Route exact path='/forgot' component={ForgotPassword} />
 						<PrivateRoute exact path='/' component={Dashboard} />
             <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/practice" />
 					</React.Fragment>
 				</Switch>
 			</Router>

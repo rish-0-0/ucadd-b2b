@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../Actions/auth/auth';
-import justTesting from '../Images/just_testing.svg';
+// import justTesting from '../Images/just_testing.svg';
+import firebaseBack from '../Images/firebase_back.svg';
+import retry from '../Images/fuck_firebase.png';
 // import LiquidCheeze from '../Images/Liquid-Cheese.svg';
 // import back from '../Images/login_side.svg';
 // import furtherBack from '../Images/Large-Triangles.svg';
@@ -23,17 +25,28 @@ import { fade,makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100vh',    
-    backgroundImage: 'url('+justTesting+')',
-    backgroundPositionX:'-2450px',
-    backgroundSize:'cover',
-    backgroundAttachment:'fixed',
+    // backgroundImage: 'url('+firebaseBack+')',
+    // // backgroundPositionX:'-1850px',
+    // // backgroundPositionY:'-100px',
+    // backgroundRepeat:'no-repeat',
+    // backgroundSize:'contain',
+    // backgroundAttachment:'fixed',
+    // backgroundColor:'#2d9ce4',
   },
   logo: {
-    fontFamily:'Ubuntu',
+    fontFamily:'Roboto',
     fontSize:'5rem',
     letterSpacing:'2px',
-    textTransform:'uppercase',
+    // textTransform:'uppercase',
     fontWeight:'bold',
+    color:'white',
+  },
+  links: {
+    color:'white',
+    fontWeight:'light',
+    textDecoration:'none',
+    fontSize:'14px',
+
   },
   input: {
     // border: '1px solid #e2e2e1',
@@ -58,7 +71,19 @@ const useStyles = makeStyles(theme => ({
     // backgroundSize:'cover',
     // backgroundSize:'contain',
     // backgroundSize:'100% 100%',
+    background: 'url('+retry+'),url('+firebaseBack+')',
+    // backgroundPositionX:'-1850px',
+    // backgroundPositionY:'-100px',
+    backgroundRepeat:'no-repeat',
+    backgroundPosition:'500px -10px,center',
+    backgroundSize:'contain,cover',
+    backgroundAttachment:'fixed',
     height:'100vh',
+  },
+  typographyText: {
+    color:'white',
+    fontFamily:'Roboto',
+    fontWeight:'bold',
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -70,6 +95,12 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
+  },
+  thodaRight: {
+    // paddingLeft:'7%',
+    paddingTop:'5%',
+    paddingLeft:'5%',
+    backgroundColor:'#2d9ce4',
   },
   form: {
     width: '90%', // Fix IE 11 issue.
@@ -93,9 +124,8 @@ function SignInSide(props) {
     <Grid container component="main" className={classes.root}>
       
       <CssBaseline />
-      <Grid item xs={false} sm={false} md={8} className={classes.image}>
-      </Grid>
-      <Grid item xs={12} sm={12} md={4} elevation={6} square>
+      
+      <Grid item xs={12} sm={12} md={4} elevation={6} className={classes.thodaRight}>
         <div className={classes.paper}>
           <Typography component="h1" variant="h2" className={classes.logo}>
             Ucadd
@@ -103,7 +133,7 @@ function SignInSide(props) {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" className={classes.typographyText}>
             Sign in
           </Typography>
           <form className={classes.form} noValidate>
@@ -150,13 +180,13 @@ function SignInSide(props) {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link to='/forgot'>
+              <Grid item xs={12}>
+                <Link className={classes.links} to='/forgot'>
                   Forgot password?
                 </Link>
               </Grid>
-              <Grid item xs>
-                <Link to='/register'>
+              <Grid item xs={12}>
+                <Link className={classes.links} to='/register'>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -177,6 +207,8 @@ function SignInSide(props) {
             </Grid>
           </form>
         </div>
+      </Grid>
+      <Grid item xs={false} sm={false} md={8} className={classes.image}>
       </Grid>
     </Grid>
   );
