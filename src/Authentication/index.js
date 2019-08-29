@@ -5,6 +5,7 @@ import { login } from '../Actions/auth/auth';
 // import justTesting from '../Images/just_testing.svg';
 import firebaseBack from '../Images/firebase_back.svg';
 import retry from '../Images/fuck_firebase.png';
+import home_page from '../Images/home_page.svg';
 // import LiquidCheeze from '../Images/Liquid-Cheese.svg';
 // import back from '../Images/login_side.svg';
 // import furtherBack from '../Images/Large-Triangles.svg';
@@ -25,11 +26,12 @@ import { fade,makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100vh',    
-    // backgroundImage: 'url('+firebaseBack+')',
-    // // backgroundPositionX:'-1850px',
+    backgroundImage: 'url('+home_page+')',
+    // backgroundPositionX:'150px',
     // // backgroundPositionY:'-100px',
-    // backgroundRepeat:'no-repeat',
-    // backgroundSize:'contain',
+    backgroundRepeat:'no-repeat',
+    backgroundSize:'cover',
+
     // backgroundAttachment:'fixed',
     // backgroundColor:'#2d9ce4',
   },
@@ -71,13 +73,13 @@ const useStyles = makeStyles(theme => ({
     // backgroundSize:'cover',
     // backgroundSize:'contain',
     // backgroundSize:'100% 100%',
-    background: 'url('+retry+'),url('+firebaseBack+')',
+    // background: 'url('+retry+'),url('+firebaseBack+')',
     // backgroundPositionX:'-1850px',
     // backgroundPositionY:'-100px',
-    backgroundRepeat:'no-repeat',
-    backgroundPosition:'500px -10px,center',
-    backgroundSize:'contain,cover',
-    backgroundAttachment:'fixed',
+    // backgroundRepeat:'no-repeat',
+    // backgroundPosition:'500px -10px,center',
+    // backgroundSize:'contain,cover',
+    // backgroundAttachment:'fixed',
     height:'100vh',
   },
   typographyText: {
@@ -100,7 +102,7 @@ const useStyles = makeStyles(theme => ({
     // paddingLeft:'7%',
     paddingTop:'5%',
     paddingLeft:'5%',
-    backgroundColor:'#2d9ce4',
+    // backgroundColor:'#2d9be6',
   },
   form: {
     width: '90%', // Fix IE 11 issue.
