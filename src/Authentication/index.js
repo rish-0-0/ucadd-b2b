@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../Actions/auth/auth';
 // import justTesting from '../Images/just_testing.svg';
-import firebaseBack from '../Images/firebase_back.svg';
-import retry from '../Images/fuck_firebase.png';
+// import firebaseBack from '../Images/firebase_back.svg';
+// import retry from '../Images/fuck_firebase.png';
 import home_page from '../Images/home_page.svg';
 // import LiquidCheeze from '../Images/Liquid-Cheese.svg';
 // import back from '../Images/login_side.svg';
@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
     // // backgroundPositionY:'-100px',
     backgroundRepeat:'no-repeat',
     backgroundSize:'cover',
+    backgroundPositionY:'-73px',
 
     // backgroundAttachment:'fixed',
     // backgroundColor:'#2d9ce4',
@@ -44,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     color:'white',
   },
   links: {
-    color:'white',
+    color:'lightblue',
     fontWeight:'light',
     textDecoration:'none',
     fontSize:'14px',
@@ -100,7 +101,7 @@ const useStyles = makeStyles(theme => ({
   },
   thodaRight: {
     // paddingLeft:'7%',
-    paddingTop:'5%',
+    // paddingTop:'5%',
     paddingLeft:'5%',
     // backgroundColor:'#2d9be6',
   },
