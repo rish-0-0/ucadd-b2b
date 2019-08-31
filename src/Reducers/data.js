@@ -34,9 +34,43 @@ const initialState = {
         ["Avi Shrivastava","RPCT2",92,1,50,90,10,2500,50,15,3500,6,1800],
         
     ],
+    bar: [
+        {
+            name:'DPT1', 'physics':50,'chemistry':75,'math':90,amt:215,
+        },
+        {
+            name:'DPT2','physics':65,'chemistry':90,'math':80,amt:235,
+        },
+        {
+            name:'RPCT1','physics':45,'chemistry':45,'math':55,amt:145,
+        },
+    ],
+    loading:false,
+    homeworkUrl:null,
+    error:null,
+    solved:false,
 };
 export const data = (state=initialState,action) => {
     switch(action.type) {
+        case 'FETCHING_HOMEWORK':
+            return {
+                ...state,
+                loading:true,
+            };
+        case 'RECEIVED_HOMEWORK':
+            localStorage.setItem('homeworkUrl',action.payload.homeworkUrl);
+            return {
+                ...state,
+                loading:false,
+                homeworkUrl:action.payload.homeworkUrl,
+                error:null,
+            };
+        case 'RECEIVED_ERROR':
+            return {
+                ...state,
+                loading:false,
+                error:action.payload.err,
+            };
         default:
             return {
                 ...state,

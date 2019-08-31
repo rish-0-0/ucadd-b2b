@@ -8,8 +8,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 // Icon Imports
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ViewListIcon from '@material-ui/icons/ViewList';
-
+// import ViewListIcon from '@material-ui/icons/ViewList';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 
 export const mainListItems = (
     <React.Fragment>
@@ -27,7 +27,7 @@ export const mainListItems = (
         </ListItem>
         <ListItem button>
             <ListItemIcon>
-                <Link to='/practice'><ViewListIcon /></Link>
+                <Link to='/practice'><AssignmentTurnedInIcon /></Link>
             </ListItemIcon>
             <ListItemText><Link to='/practice'>Dashboard</Link></ListItemText>
         </ListItem>

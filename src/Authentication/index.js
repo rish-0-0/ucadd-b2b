@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     fontFamily:'Roboto',
-    fontSize:'5rem',
+    fontSize:'3.5rem',
     letterSpacing:'2px',
     // textTransform:'uppercase',
     fontWeight:'bold',
@@ -46,10 +46,10 @@ const useStyles = makeStyles(theme => ({
   },
   links: {
     color:'lightblue',
-    fontWeight:'light',
+    fontWeight:'500',
     textDecoration:'none',
     fontSize:'14px',
-
+    fontFamily:'Roboto',
   },
   input: {
     // border: '1px solid #e2e2e1',
@@ -101,7 +101,7 @@ const useStyles = makeStyles(theme => ({
   },
   thodaRight: {
     // paddingLeft:'7%',
-    // paddingTop:'5%',
+    // paddingTop:'-15%',
     paddingLeft:'5%',
     // backgroundColor:'#2d9be6',
   },

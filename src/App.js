@@ -6,7 +6,10 @@ import Register from './Authentication/register';
 import ForgotPassword from './Authentication/forgot';
 import Dashboard from './Components/Pages/Dashboard';
 import { SnackbarProvider } from 'notistack';
+
 import Profile from './Components/Pages/Profile';
+import Practice from './Components/Pages/Practice';
+import Solve from './Components/Pages/Solve';
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route {...rest}
@@ -30,7 +33,8 @@ function App(props) {
             <Route exact path='/forgot' component={ForgotPassword} />
 						<PrivateRoute exact path='/' component={Dashboard} />
             <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/practice" />
+            <PrivateRoute path="/practice" component={Practice} />
+            <PrivateRoute path="/solve" component={Solve}/>
 					</React.Fragment>
 				</Switch>
 			</Router>

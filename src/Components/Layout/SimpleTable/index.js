@@ -69,9 +69,4 @@ const mapStateToProps = (state) => {
         emailVerified,
     };
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    };
-};
-export default connect(mapStateToProps,mapDispatchToProps)(SimpleTable);
+export default connect(mapStateToProps)(SimpleTable);
