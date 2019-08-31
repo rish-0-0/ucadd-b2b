@@ -10,6 +10,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 // import ViewListIcon from '@material-ui/icons/ViewList';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
 
 export const mainListItems = (
     <React.Fragment>
@@ -29,7 +30,13 @@ export const mainListItems = (
             <ListItemIcon>
                 <Link to='/practice'><AssignmentTurnedInIcon /></Link>
             </ListItemIcon>
-            <ListItemText><Link to='/practice'>Dashboard</Link></ListItemText>
+            <ListItemText><Link to='/practice'>Practice</Link></ListItemText>
+        </ListItem>
+        <ListItem button>
+            <ListItemIcon>
+                <Link to='/watch'><OndemandVideoIcon /></Link>
+            </ListItemIcon>
+            <ListItemText><Link to='/watch'>Learn</Link></ListItemText>
         </ListItem>
     </React.Fragment>
 );

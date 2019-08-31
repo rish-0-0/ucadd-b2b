@@ -35,6 +35,7 @@ function App(props) {
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/practice" component={Practice} />
             <PrivateRoute path="/solve" component={Solve}/>
+            <PrivateRoute path="/structure" />
 					</React.Fragment>
 				</Switch>
 			</Router>

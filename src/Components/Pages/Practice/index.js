@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     padding:theme.spacing(1),
     margin:theme.spacing(1),
   },
+  paper: {
+    padding:theme.spacing(1),
+  },
 }));
 function PracticeSection(props) {
   const classes = useStyles();
@@ -28,13 +31,13 @@ function PracticeSection(props) {
             </Paper>
           </Grid>
           <Grid item md={4}>
-            <Paper>
+            <Paper className={classes.paper}>
               <SectionTitle>Accuracy</SectionTitle>
-              <Typography>64%</Typography>
+              <Typography component="h2" variant="h3">64%</Typography>
             </Paper>
-            <Paper>
+            <Paper className={classes.paper}>
               <SectionTitle>No. of videos watched</SectionTitle>
-              <Typography>12</Typography>
+              <Typography component="h2" variant="h3">12</Typography>
             </Paper>
           </Grid>
         </Grid>
