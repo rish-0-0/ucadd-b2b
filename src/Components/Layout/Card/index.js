@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     padding:0,
   },
   linkButton: {
-    padding:0,
+    padding:'4px',
   },
 });
 

@@ -6,6 +6,13 @@ const videoIdMap = {
             'title':'For 3 circles, how many radical centers?',
         },
     },
+    'M11CMPD08':{
+        'url':'https://youtu.be/I_aU6tkpVMw',
+        'title':'Compound Angles 8',
+        'practiceQuestion':{
+            'title':'What is the period of cot(x)?',
+        },
+    },
     'M11FUNC01':{
         'url':'https://youtu.be/ms5iwbKkaQ0',
         'title':'Introduction to Functions',

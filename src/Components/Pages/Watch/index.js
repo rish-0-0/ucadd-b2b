@@ -5,8 +5,8 @@ import AppLayout from '../../Layout/AppLayout';
 import MediaCard from '../../Layout/Card';
 // Image imports
 import functions from '../../../Images/CardImg/functions.png';
-import shm from '../../../Images/CardImg/shm.png';
 import circles from '../../../Images/CardImg/circles.png';
+import compound from '../../../Images/CardImg/compound.png';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -38,11 +38,11 @@ function Watch(props) {
                     </Grid>
                     <Grid item xs={12} md={4}>
                         
-                        <MediaCard title="SHM Introduction"
-                            image={shm}
-                            imageTitle='SHM Introduction'
-                            content="Simple Harmonic Motion introduction. Equation and understanding phase"
-                            videoId={'P11SHM01'}
+                        <MediaCard title="Compound Angles 8"
+                            image={compound}
+                            imageTitle='Compound Angles 8'
+                            content="Compound angles and periodic functions."
+                            videoId={'M11CMPD08'}
                         />
 
                     </Grid>
