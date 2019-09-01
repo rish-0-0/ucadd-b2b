@@ -185,10 +185,7 @@ function AppLayout(props) {
 }
 
 AppLayout.propTypes = {
-  children: PropTypes.oneOf([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: PropTypes.node,
 };
 
 const mapStateToProps = (state) => {

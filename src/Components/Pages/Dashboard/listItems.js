@@ -34,9 +34,9 @@ export const mainListItems = (
         </ListItem>
         <ListItem button>
             <ListItemIcon>
-                <Link to='/watch'><OndemandVideoIcon /></Link>
+                <Link to='/videos'><OndemandVideoIcon /></Link>
             </ListItemIcon>
-            <ListItemText><Link to='/watch'>Learn</Link></ListItemText>
+            <ListItemText><Link to='/videos'>Learn</Link></ListItemText>
         </ListItem>
     </React.Fragment>
 );

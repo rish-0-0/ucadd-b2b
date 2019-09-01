@@ -1,3 +1,19 @@
+const videoIdMap = {
+    'M12CIRC46':{
+        'url':'https://youtu.be/SbISpF0xVD0',
+        'title':'Circles 46',
+        'practiceQuestion':{
+            'title':'For 3 circles, how many radical centers?',
+        },
+    },
+    'M11FUNC01':{
+        'url':'https://youtu.be/ms5iwbKkaQ0',
+        'title':'Introduction to Functions',
+        'practiceQuestion':{
+            'title':'Is every function a relation?',
+        },
+    },
+};
 const initialState = {
     // Pie chart
     pie: [
@@ -49,9 +65,19 @@ const initialState = {
     homeworkUrl:null,
     error:null,
     solved:false,
+    videoPlaying:null,
+    practiceQuestionContent:null,
 };
 export const data = (state=initialState,action) => {
     switch(action.type) {
+        case 'GET_VIDEO_URL':
+            const id = action.payload.id;
+            const videoInfo = videoIdMap[id];
+            return {
+                ...state,
+                videoPlaying:videoInfo.url,
+                practiceQuestionContent:videoInfo.practiceQuestion.title,
+            };
         case 'FETCHING_HOMEWORK':
             return {
                 ...state,

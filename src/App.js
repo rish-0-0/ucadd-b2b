@@ -10,6 +10,8 @@ import { SnackbarProvider } from 'notistack';
 import Profile from './Components/Pages/Profile';
 import Practice from './Components/Pages/Practice';
 import Solve from './Components/Pages/Solve';
+import Watch from './Components/Pages/Watch';
+import VideoPlayer from './Components/Pages/VideoPlayer';
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route {...rest}
@@ -20,7 +22,16 @@ const PrivateRoute = ({component: Component, ...rest}) => (
     )}
   />
 );
-  
+
+const AnotherPrivateRoute = ({render,...rest}) => (
+  <Route {...rest}
+    render={props => (
+      sessionStorage.getItem('loggedIn')
+      ? render(props)
+      : <Redirect to='/login' />
+    )}
+  />
+);
 
 function App(props) {
 	return (
@@ -35,7 +46,10 @@ function App(props) {
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/practice" component={Practice} />
             <PrivateRoute path="/solve" component={Solve}/>
-            <PrivateRoute path="/structure" />
+            <PrivateRoute path="/videos" component={Watch} />
+            <AnotherPrivateRoute path='/watch/:id' render={
+              ({match}) => <VideoPlayer videoId={match.params.id} />
+            } />
 					</React.Fragment>
 				</Switch>
 			</Router>
